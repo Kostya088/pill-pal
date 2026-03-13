@@ -32,6 +32,10 @@ export default function Modal({ onClose, children }: formModalProps) {
     };
   }, [onClose]);
 
+  if (typeof document === "undefined") {
+    return null;
+  }
+
   return createPortal(
     <div
       className={css.backdrop}
