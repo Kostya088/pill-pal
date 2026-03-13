@@ -1,0 +1,30 @@
+.header {
+  border-bottom: 1px solid grey;
+}
+
+.headerList {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  list-style: none;
+  padding: 0;
+  margin: 10px auto;
+}
+
+.name {
+  font-size: 26px;
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+}
+
+.addNew {
+  display: inline-block;
+  border-radius: 10px;
+  border: none;
+  background-color: rgba(0, 0, 255, 0.887);
+  padding: 8px;
+  color: white;
+  text-decoration: none;
+}

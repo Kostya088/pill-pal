@@ -1,0 +1,41 @@
+.page {
+	min-height: 100vh;
+	padding: 32px 16px;
+}
+
+.main {
+	width: min(720px, 100%);
+	margin: 0 auto;
+}
+
+.list {
+	display: grid;
+	gap: 12px;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+.card {
+	padding: 16px;
+	border: 1px solid #d9d9d9;
+	border-radius: 12px;
+	background: #fff;
+}
+
+.name {
+	margin: 0 0 8px;
+	font-size: 18px;
+	font-weight: 600;
+}
+
+.date {
+	margin: 0;
+	color: #555;
+}
+
+.empty {
+	margin: 0;
+	text-align: center;
+	color: #666;
+}
