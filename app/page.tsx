@@ -10,9 +10,22 @@ export default function Home() {
   const loadMedicine = useMedStore((state) => state.loadMedicine);
   const deleteMedicine = useMedStore((state) => state.removeMedicine);
   const [pendingDeleteId, setPendingDeleteId] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
-    loadMedicine();
+    const fetchData = async () => {
+      setIsLoading(true);
+      try {
+        await loadMedicine();
+      } catch (error) {
+        console.error("Failed to load medicine: ", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchData();
   }, [loadMedicine]);
 
   const openDeleteConfirm = (id: string) => {
@@ -23,19 +36,29 @@ export default function Home() {
     setPendingDeleteId(null);
   };
 
-  const confirmDelete = () => {
+  const confirmDelete = async () => {
     if (!pendingDeleteId) {
       return;
     }
 
-    deleteMedicine(pendingDeleteId);
-    setPendingDeleteId(null);
+    setIsDeleting(true);
+
+    try {
+      await deleteMedicine(pendingDeleteId);
+      setPendingDeleteId(null);
+    } catch (error) {
+      console.error("Failed to delete medicine: ", error);
+    } finally {
+      setIsDeleting(false);
+    }
   };
 
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-        {medicine.length > 0 ? (
+        {isLoading ? (
+          <p className={styles.empty}>Loading...</p>
+        ) : medicine.length > 0 ? (
           <ul className={styles.list}>
             {medicine.map((med) => (
               <li key={med.id} className={styles.card}>
@@ -60,8 +83,12 @@ export default function Home() {
               <button type="button" onClick={closeDeleteConfirm}>
                 Cancel
               </button>
-              <button type="button" onClick={confirmDelete}>
-                Delete
+              <button
+                type="button"
+                onClick={confirmDelete}
+                disabled={isDeleting}
+              >
+                {isDeleting ? "Deleting..." : "Delete"}
               </button>
             </div>
           </Modal>

@@ -13,7 +13,7 @@ export default function MedForm({ onCancel }: MedFormProps) {
   const router = useRouter();
   const addMedicine = useMedStore((state) => state.addMedicine);
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
 
@@ -23,7 +23,7 @@ export default function MedForm({ onCancel }: MedFormProps) {
       expirationDate: String(formData.get("date")),
     };
 
-    addMedicine(values);
+    await addMedicine(values);
     router.back();
   };
 

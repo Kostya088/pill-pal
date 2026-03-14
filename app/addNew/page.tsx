@@ -1,5 +1,9 @@
+"use client";
+
 import MedForm from "@/components/form/form";
+import { useRouter } from "next/navigation";
 
 export default function AddNewPage() {
-  return <MedForm />;
+  const router = useRouter();
+  return <MedForm onCancel={() => router.back()} />;
 }
