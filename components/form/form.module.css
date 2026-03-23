@@ -4,6 +4,13 @@
   gap: 16px;
 }
 
+.label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #212529;
+  margin-bottom: -12px;
+}
+
 .input {
   margin-top: 4px;
   padding: 8px 12px;
