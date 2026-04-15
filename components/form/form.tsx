@@ -1,6 +1,5 @@
 "use client";
 
-import { useMedStore } from "@/store/medStore";
 import {
   Category,
   CATEGORY_OPTIONS,
@@ -11,6 +10,7 @@ import {
 } from "@/types/medicine";
 import css from "./form.module.css";
 import { useRouter } from "next/navigation";
+import { useMedStore } from "@/lib/store/medStore";
 
 interface MedFormProps {
   onCancel?: () => void;

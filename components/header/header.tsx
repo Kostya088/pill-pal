@@ -6,12 +6,12 @@ export default function Header() {
     <header className={css.header}>
       <ul className={css.headerList}>
         <li>
-          <Link href="/" className={css.name}>
+          <Link href="/medicine" className={css.name}>
             Medical Chest
           </Link>
         </li>
         <li>
-          <Link href="/addNew" className={css.addNew}>
+          <Link href="/medicine/addNew" className={css.addNew}>
             Add new medicine +
           </Link>
         </li>
